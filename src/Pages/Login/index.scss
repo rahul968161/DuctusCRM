@@ -1,0 +1,54 @@
+.Login {
+    background: linear-gradient(180deg, #5E97FF 0%, #2A24D9 100%);
+    height: 100vh;
+    width: 100vw;
+
+    .Main {
+        height: 70vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+
+        .Card {
+            width: 466px;
+            height: 544px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            @media only screen and (min-width: 600px) {
+                background-color: #FFF;
+                padding: 50px 30px;
+                border-radius: 5%;
+
+                .Heading {
+                    font-family: 'Roboto';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 24px;
+                    line-height: 28px;
+                    text-align: center;
+                    color: #3E3E3E;
+                    margin-bottom: 60px;
+                }
+
+                .Text {
+                    font-family: 'Roboto';
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 21px;
+                    text-align: center;
+                    color: #8A8A8A;
+
+                    span {
+                        color: #191970;
+                    }
+                }
+            }
+        }
+    }
+}
