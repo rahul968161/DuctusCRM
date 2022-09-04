@@ -55,8 +55,10 @@ function ComponentRequest() {
     Pro['PartNumber'] = RequestData[index].PartNumber;
     Pro['Pakage'] = RequestData[index].Pakage; 
     Pro['PartDescription'] = RequestData[index].PartDescription; 
-    Pro['Program'] = RequestData[index].Program; 
+    Pro['Date'] = RequestData[index].Date;
+    Pro['Program'] = RequestData[index].Program;
     Pro['Quantity'] = RequestData[index].Quantity; 
+    Pro['Name'] = RequestData[index].FullName;
     Pro['AddedOn'] = RequestData[index].AddedOn;
     Pro['Status'] = RequestData[index].Status; 
 
