@@ -18,9 +18,9 @@ function App() {
     LotNumber: "",
     PartNumber: "",
     Package: "",
+    Date: "",
     Program: "",
     Quantity: 0,
-    AddedBy: "",
     Location:""
   });
 
@@ -53,7 +53,11 @@ function App() {
               UpdatedBy: localStorage.getItem("Token"),
               ProductId: id,
             })
-          : JSON.stringify(Product)
+          : JSON.stringify(
+               {
+              ...Product,
+              AddedBy: localStorage.getItem("Token"),
+          })
       );
       axios
         .post("https://theductus.com/", bodyFormData)
@@ -122,27 +126,30 @@ function App() {
                 className="SearchField"
                 size="large"
                 onChange={(e) =>
-                  setProduct({ ...Product, Program: e.target.value })
+                  setProduct({ ...Product, Date: e.target.value })
                 }
-                value={Product.Program}
+                value={Product.Date}
               />
             </Col>
+            
             <Col xl={8} lg={12} md={12} sm={24} xs={24}>
-              <h3>Manufacturer Name</h3>
+              <h3>Program</h3>
               <Input
                 style={{
                   width: "100%",
                   borderRadius: "10px",
                   backgroundColor: "#EDEFF1",
                 }}
+                type="text"
                 className="SearchField"
                 size="large"
                 onChange={(e) =>
-                  setProduct({ ...Product, AddedBy: e.target.value })
+                  setProduct({ ...Product, Program: e.target.value })
                 }
-                value={Product.AddedBy}
+                value={Product.Program}
               />
             </Col>
+            
             <Col xl={8} lg={12} md={12} sm={24} xs={24}>
               <h3>Part Number</h3>
               <Input
@@ -207,6 +214,8 @@ function App() {
                 value={Product.Location}
               />
             </Col>
+
+            
           </Row>
 
           <Row>

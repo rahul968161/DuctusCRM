@@ -1,5 +1,5 @@
 import TableComponent from "../../Component/Table";
-import { Button, Modal } from "antd";
+import { Button, Modal, Input } from "antd";
 import { ShareAltOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -12,6 +12,11 @@ import AddComponentRequest from "../AddComponentRequest";
 import CSVTOJSON from "./CSVTOJSON";
 
 function Products(props) {
+
+
+  
+
+
   const navigate = useNavigate();
   const [RequestComponent, setRequestComponent] = useState({
     model: false,
@@ -63,6 +68,11 @@ function Products(props) {
     },
     {
       title: "Date",
+      dataIndex: "Date",
+      key: "Date",
+    },
+    {
+      title: "Program",
       dataIndex: "Program",
       key: "Program",
     },
@@ -141,7 +151,8 @@ function Products(props) {
     Pro['ProductDescription'] = ProductData[index].ProductDescription;
     Pro['LotNumber'] = ProductData[index].LotNumber;
     Pro['PartNumber'] = ProductData[index].PartNumber;
-    Pro['Package'] = ProductData[index].Package;
+    Pro['Package'] = ProductData[index].Pakage;
+    Pro['Date'] = ProductData[index].Date;
     Pro['Program'] = ProductData[index].Program;
     Pro['Quantity'] = ProductData[index].Quantity;
 
@@ -149,6 +160,19 @@ function Products(props) {
     ProductColumns.push(obj);
      
   }
+
+
+  const [filterTable, setFilterTable] = useState(null);
+
+  const onSearch = (value) => {
+    console.log(value);
+      const filterData = ProductData.filter((o) => Object.keys(o).some((k) => String(o[k])
+      .toLowerCase()
+      .includes(value.toLowerCase())));
+      setFilterTable(filterData);
+  };
+
+  
   
 
   return (
@@ -156,7 +180,7 @@ function Products(props) {
       <div style={{ padding: "50px" }}>
         <div
           style={{
-            display: "flex",
+            display: "inline-flex",
             flexDirection: "row",
             alignItems: "center",
             alignContent: "center",
@@ -174,9 +198,17 @@ function Products(props) {
               fill: "#000",
             }}
           />
-          <h2>{!props.Report ? "Component Table" : "Report"}</h2>
+          <h2 >{!props.Report ? "Component Table" : "Report"}</h2>
         </div>
-        <TableComponent columns={Columns} data={ProductData} />
+
+        <Input.Search
+        style={{ width: 'auto', float:'right', margin: '0 0 10px 0' }}
+        placeholder="Search by..."
+        enterButton
+        onSearch={onSearch}
+        />
+
+        <TableComponent columns={Columns} data={(filterTable)?filterTable:ProductData}  />
         {!props.Report &&
           JSON.parse(localStorage.getItem("user")).UserType == "Admin" && (
             <div

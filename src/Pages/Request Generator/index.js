@@ -19,7 +19,7 @@ function RequestGenerator() {
     const bodyFormData = new FormData();
     bodyFormData.append("RequestType", "PONumber");
     axios
-      .post("http://dev.ductus.test/", bodyFormData)
+      .post("https://theductus.com/", bodyFormData)
       .then((res) => {
 
         let PO;
@@ -32,14 +32,19 @@ function RequestGenerator() {
     GetPONumber();
   }, []);
 
+
+  const current = new Date();
+  const DateNow = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  const POGenerateNo = `PO/DTPL/${current.getYear()-100}-${current.getYear()-100}/${PONumberData}`;
+
   const [Details, setDetails] = useState({
     Company_Name: "",
     Address: "",
     Dist: "",
     State: "",
     GST: "",
-    PO_NO: "PO/DTPL/21-22/--",
-    PO_DATE: "",
+    PO_NO: "PO/DTPL/22-23/--",
+    PO_DATE: DateNow,
     Delivery_Date: "",
     Supplier_Email: "",
   });
@@ -60,9 +65,7 @@ function RequestGenerator() {
   });
 
 
-  const current = new Date();
-  const DateNow = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-  const POGenerateNo = `PO/DTPL/${current.getYear()-100}-${current.getYear()-100}/${PONumberData}`;
+
 
  // const POGenerasteNo = "PO/DTPL/"+`${current.getYear()-current.getYear()/PONumberData};
 
@@ -75,7 +78,7 @@ function RequestGenerator() {
     bodyFormData.append("RequestType", "PrintPORequest");
     bodyFormData.append("RequestData", JSON.stringify({ html: printElm({ Details, state, isView: 0  }), PORequestId: {PONumberData} }));
     axios
-      .post("http://dev.ductus.test/", bodyFormData)
+      .post("https://theductus.com/", bodyFormData)
       .then((res) => {
         console.log('aamir');
         // let PO;
@@ -179,8 +182,8 @@ function RequestGenerator() {
             <Col span={24}>
               <Input
                 className="InputFields"
-                /* value={Details.PO_DATE} */
-                value={DateNow} 
+                value={Details.PO_DATE}
+                /* value={DateNow} */
                 onChange={(e) =>
                   setDetails({ ...Details, PO_DATE: e.target.value })
                 }

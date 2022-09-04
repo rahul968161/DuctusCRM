@@ -184,6 +184,8 @@
                     <td class="tg-0pky" colspan="3">
                       <h3>${Details.Company_Name}</h3>
                       <p>${Details.Address}</p>
+                      <p>${Details.Dist}</p>
+                      <p>${Details.State} - ${Details.GST}</p>
                     </td>
                     <td rowspan="1">
                       <table style="width: 100%;">
@@ -217,7 +219,7 @@
                       </h3>
                     </td>
                     <td class="tg-0pky" colspan="3">
-                      <h3 style="margin: 5px 0;">${Details.Company_Name}</h3>
+                      <!-- <h3 style="margin: 5px 0;">${Details.Company_Name}</h3> -->
                       <p> Ductus Technologies Private Limited 382, Pace City II, Sector 37,
                       Gurugram, Haryana 122001</p>
                     </td>
