@@ -141,6 +141,9 @@
                   text-align: left;
                   vertical-align: top
                 }
+                .tg .tg-0lay{
+                  text-align:center;
+                }
             
                 p {
                   margin: 0px !important;
@@ -185,7 +188,7 @@
                       <h3>${Details.Company_Name}</h3>
                       <p>${Details.Address}</p>
                       <p>${Details.Dist}</p>
-                      <p>${Details.State} - ${Details.GST}</p>
+                      <p>${Details.State} GST ${Details.GST}</p>
                     </td>
                     <td rowspan="1">
                       <table style="width: 100%;">
@@ -202,13 +205,10 @@
                           <td style="border: none">${Details.Delivery_Date}</td>
                         </tr>
                         <tr>
-                          <td style="border: none">Suplier Email</td>
+                          <td style="border: none">Suplier Contact</td>
                           <td style="border: none">${Details.Supplier_Email}</td>
                         </tr>
-                        <tr>
-                          <td style="border: none">Conact No.</td>
-                          <td style="border: none">+91 8130635329</td>
-                        </tr>
+                        
                       </table>
                     </td>
                   </tr>
@@ -220,7 +220,8 @@
                     </td>
                     <td class="tg-0pky" colspan="3">
                       <!-- <h3 style="margin: 5px 0;">${Details.Company_Name}</h3> -->
-                      <p> Ductus Technologies Private Limited 382, Pace City II, Sector 37,
+                      <h3>Ductus Technologies Private Limited</h3>
+                      <p>  382, Pace City II, Sector 37,
                       Gurugram, Haryana 122001</p>
                     </td>
                     <th class="tg-0pky">
@@ -304,11 +305,11 @@
                        </tr>
                        <tr>
                          <td>CGST @ 9% </td>
-                         <td>${CGST}</td>
+                         <td></td>
                        </tr>
                        <tr>
                          <td>SGST @ 9% </td>
-                         <td>${CGST}</td>
+                         <td></td>
                        </tr>
                        <tr>
                          <th>TOTAL PO VALUE </th>
@@ -378,8 +379,8 @@
                      Vendor shall furnish Ductus with a formal waiver or release of all liens by Ductus and/or Ductus's suppliers.
                    </td>
                    <td class="tg-0lax" colspan="3">
-                     <p>For Ductus Technologies Private Limited</p>
-                     <p>Authorised Signatory</p>
+                     <p >For Ductus Technologies Private Limited</p><br><br><br><br>
+                     <p class="tg-0lay">Authorised Signatory</p>
                    </td>
                  </tr>
                  <tr>
