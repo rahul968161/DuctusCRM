@@ -188,7 +188,8 @@
                       <h3>${Details.Company_Name}</h3>
                       <p>${Details.Address}</p>
                       <p>${Details.Dist}</p>
-                      <p>${Details.State} GST ${Details.GST}</p>
+                      <p>${Details.State} </p>
+                      <p><h3>GST</h3> ${Details.GST}</p>
                     </td>
                     <td rowspan="1">
                       <table style="width: 100%;">
@@ -205,8 +206,12 @@
                           <td style="border: none">${Details.Delivery_Date}</td>
                         </tr>
                         <tr>
-                          <td style="border: none">Suplier Contact</td>
+                          <td style="border: none">Suplier Email</td>
                           <td style="border: none">${Details.Supplier_Email}</td>
+                        </tr>
+                        <tr>
+                          <td style="border: none">Suplier Contact</td>
+                          <td style="border: none">${Details.Supplier_Contact}</td>
                         </tr>
                         
                       </table>
@@ -228,19 +233,15 @@
                       <table style="width: 100%;">
                         <tr>
                           <td style="border: none">User</td>
-                          <td style="border: none">${
-                            JSON.parse(localStorage.getItem("user")).FullName
-                          }</td>
+                          <td style="border: none">Shahnawaz Alam</td>
                         </tr>
                         <tr>
                           <td style="border: none">User Email</td>
-                          <td style="border: none">${
-                            JSON.parse(localStorage.getItem("user")).EmailAddress
-                          }</td>
+                          <td style="border: none">admin@ductus.tech</td>
                         </tr>
                         <tr>
                           <td style="border: none">Payment Terms</td>
-                          <td style="border: none">30 Days</td>
+                          <td style="border: none">${Details.Payment_term}</td>
                         </tr>
                       </table>
                     </th>
@@ -253,7 +254,9 @@
                           <td style="border: none;">Product Description</td>
                         </tr>
                       </table>
+                      
                     </td>
+                    
                     <td class="tg-0pky">HSN/SAC </td>
                     <td class="tg-0pky">Rate</td>
                     <td class="tg-0pky">QTY</td>
@@ -272,7 +275,9 @@
                       <td style="border: none;">${dat.Description}</td>
                     </tr>
                   </table>
+                   
                 </td>
+                
                 <td class="tg-0pky">${dat.HSN_SAC}</td>
                 <td class="tg-0pky">${dat.RATE}</td>
                 <td class="tg-0pky">${dat.QTY}</td>

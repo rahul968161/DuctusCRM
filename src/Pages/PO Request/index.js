@@ -3,14 +3,14 @@ import { Button } from 'antd';
 import { ShareAltOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Tag } from 'antd';
 import { MoreOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { toast } from 'react-toastify';
 
 function PORequest() {
   const navigate = useNavigate();
-
+  const { Status } = useParams();
   const [RequestData, setRequestData] = useState()
   function GetAllRequest() {
     const bodyFormData = new FormData();
@@ -18,6 +18,7 @@ function PORequest() {
     if (JSON.parse(localStorage.getItem("user")).UserType !== "Admin") {
       bodyFormData.append("RequestData", JSON.stringify({ UserId: localStorage.getItem("Token") }));
     }
+    bodyFormData.append("RequestData", JSON.stringify({ Status: Status }));
     axios.post("https://theductus.com/", bodyFormData).then((res) => {
       console.log(res?.data?.ResponseData, "res?.data?.ResponseData")
       const PORequest = []
@@ -33,7 +34,7 @@ function PORequest() {
   }
   useEffect(() => {
     GetAllRequest()
-  }, [])
+  }, [Status])
 
   const Columns = [
     {
@@ -79,7 +80,7 @@ function PORequest() {
       title: 'Action',
       key: '',
       render: (text, record) => {
-        if (JSON.parse(localStorage.getItem("user")).UserType == "Admin") {
+        if (Status == "0" && JSON.parse(localStorage.getItem("user")).UserType == "Admin") {
           return (
             <div>
               <Button onClick={() => {
@@ -103,7 +104,7 @@ function PORequest() {
                 const bodyFormData = new FormData();
                 bodyFormData.append('RequestType', "RejectPORequest");
                 bodyFormData.append('RequestData', JSON.stringify({ "PORequestId": text?.Id, "UserId": localStorage.getItem("Token") }));
-                axios.post("https://theductus.com/", bodyFormData).then((res) => {
+                axios.post("http://dev.ductus.test/", bodyFormData).then((res) => {
                   GetAllRequest()
                   toast(res?.data?.ResponseMessage)
                 }).catch((err) => toast(err))
@@ -118,7 +119,24 @@ function PORequest() {
               </Button>
             </div>
           )
-        } else {
+        } 
+        if (Status == "1" && JSON.parse(localStorage.getItem("user")).UserType == "Admin") {
+          return (
+            <div>
+              <Button className="Tag" disabled="disabled"
+                style={{
+                  background: "#286609",
+                  margin: "0px 5px",
+                  color:'#fff',
+                }}
+              >
+                Approved
+              </Button>
+              
+            </div>
+          )
+        }
+        else {
           return <div>Only Allowed To Admin</div>
         }
       },

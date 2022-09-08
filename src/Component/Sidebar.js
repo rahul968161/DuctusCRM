@@ -93,7 +93,14 @@ const List = [
   {
     id: 11,
     name: "Purchase Requests",
-    Link: "/PORequest",
+    Link: "/PORequest/0",
+    admin: true,
+    icon: <UserDeleteOutlined />,
+  },
+  {
+    id: 11,
+    name: "Approved PO Requests",
+    Link: "/PORequest/1",
     admin: true,
     icon: <UserDeleteOutlined />,
   },
