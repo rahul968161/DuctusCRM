@@ -47,6 +47,7 @@ function RequestGenerator() {
     PO_DATE: DateNow,
     Delivery_Date: "",
     Supplier_Email: "",
+    Payment_term:"",
   });
 
   const [state, setState] = useState({
@@ -163,7 +164,13 @@ function RequestGenerator() {
               <h4>Delivery Date</h4>
             </Col>
             <Col className="InputFields" span={24}>
+              <h4>Payment Term</h4>
+            </Col>
+            <Col className="InputFields" span={24}>
               <h4>Supplier Email</h4>
+            </Col>
+            <Col className="InputFields" span={24}>
+              <h4>Supplier Contact</h4>
             </Col>
           </Row>
         </Col>
@@ -176,7 +183,7 @@ function RequestGenerator() {
                 onChange={(e) =>
                   setDetails({ ...Details, PO_NO: e.target.value })
                 }
-                placeholder="Auto Generated"
+                placeholder="PO No."
               />
             </Col>
             <Col span={24}>
@@ -203,11 +210,31 @@ function RequestGenerator() {
             <Col span={24}>
               <Input
                 className="InputFields"
+                value={Details.Payment_term}
+                onChange={(e) =>
+                  setDetails({ ...Details, Payment_term: e.target.value })
+                }
+                placeholder="Payment Term"
+              />
+            </Col>
+            <Col span={24}>
+              <Input
+                className="InputFields"
                 value={Details.Supplier_Email}
                 onChange={(e) =>
                   setDetails({ ...Details, Supplier_Email: e.target.value })
                 }
-                placeholder="Manual Enter Email"
+                placeholder=" Enter Email"
+              />
+            </Col>
+            <Col span={24}>
+              <Input
+                className="InputFields"
+                value={Details.Supplier_Contact}
+                onChange={(e) =>
+                  setDetails({ ...Details, Supplier_Contact: e.target.value })
+                }
+                placeholder="Enter Contact No."
               />
             </Col>
           </Row>
