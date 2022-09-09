@@ -65,7 +65,7 @@ const List = [
   {
     id: 7,
     name: "View PO Request",
-    Link: "/PORequest",
+    Link: "/PORequest/0",
     admin: false,
     icon: <FileOutlined />,
   },
