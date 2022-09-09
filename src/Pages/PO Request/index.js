@@ -43,6 +43,11 @@ function PORequest() {
       key: 'Id',
     },
     {
+      title: 'Name',
+      dataIndex: 'FullName',
+      key: 'Name',
+    },
+    {
       title: 'PartNumber',
       dataIndex: 'PartNumber',
       key: 'PartNumber',
@@ -104,7 +109,7 @@ function PORequest() {
                 const bodyFormData = new FormData();
                 bodyFormData.append('RequestType', "RejectPORequest");
                 bodyFormData.append('RequestData', JSON.stringify({ "PORequestId": text?.Id, "UserId": localStorage.getItem("Token") }));
-                axios.post("http://dev.ductus.test/", bodyFormData).then((res) => {
+                axios.post("https://theductus.com/", bodyFormData).then((res) => {
                   GetAllRequest()
                   toast(res?.data?.ResponseMessage)
                 }).catch((err) => toast(err))
