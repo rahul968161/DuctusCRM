@@ -16,9 +16,10 @@ function PORequest() {
     const bodyFormData = new FormData();
     bodyFormData.append('RequestType', "PORequests");
     if (JSON.parse(localStorage.getItem("user")).UserType !== "Admin") {
-      bodyFormData.append("RequestData", JSON.stringify({ UserId: localStorage.getItem("Token") }));
+      bodyFormData.append("RequestData", JSON.stringify({ Status: Status, UserId: localStorage.getItem("Token") }));
+    } else {
+      bodyFormData.append("RequestData", JSON.stringify({ Status: Status }));
     }
-    bodyFormData.append("RequestData", JSON.stringify({ Status: Status }));
     axios.post("https://theductus.com/", bodyFormData).then((res) => {
       console.log(res?.data?.ResponseData, "res?.data?.ResponseData")
       const PORequest = []
